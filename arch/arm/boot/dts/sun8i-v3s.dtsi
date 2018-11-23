@@ -43,7 +43,8 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/clock/sun8i-v3s-ccu.h>
 #include <dt-bindings/reset/sun8i-v3s-ccu.h>
-
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/input/input.h>
 / {
 	#address-cells = <1>;
 	#size-cells = <1>;
@@ -291,6 +292,8 @@
 			clock-names = "usb0_phy";
 			resets = <&ccu RST_USB_PHY0>;
 			reset-names = "usb0_reset";
+			pinctrl-names = "default";
+			pinctrl-0 = <&usb_id_pin>;
 			status = "disabled";
 			#phy-cells = <1>;
 		};
@@ -385,6 +388,23 @@
 				function = "mmc1";
 				drive-strength = <30>;
 				bias-pull-up;
+			};
+
+			usb_id_pin: usb_id_pin {
+				pins = "PF6";
+				function = "gpio_in";
+				bias-pull-up;
+			};
+
+			gpio_keys_pins: gpio_keys {
+				pins = "PB0", "PB1", "PB2", "PB3", "PB8", "PB9", "PG1", "PG2", "PG3", "PG4";
+				function = "gpio_in";
+				bias-pull-up;
+			};
+
+			led_pins: leds {
+				pins = "PG5";
+				function = "gpio_out";
 			};
 
 			spi0_pins: spi0 {

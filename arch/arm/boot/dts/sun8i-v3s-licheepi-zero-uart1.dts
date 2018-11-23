@@ -43,8 +43,9 @@
 /dts-v1/;
 
 #include "sun8i-v3s.dtsi"
+/*
 #include "sunxi-common-regulators.dtsi"
-
+*/
 / {
 	model = "Lichee Pi Zero";
 	compatible = "licheepi,licheepi-zero", "allwinner,sun8i-v3s";
@@ -62,27 +63,28 @@
         status = "okay";
 };
 
-&mmc0 {
-	pinctrl-0 = <&mmc0_pins_a>;
-	pinctrl-names = "default";
-	broken-cd;
-	bus-width = <4>;
-	vmmc-supply = <&reg_vcc3v3>;
-	status = "okay";
-};
-
 &i2c0 {
 	status = "okay";
 
         axp209: axp209@34{
 	        reg = <0x34>;
                 interrupt-parent=<&pio>;
-                interrupts=<1 8 IRQ_TYPE_EDGE_FALLING>;
+                interrupts=<1 5 IRQ_TYPE_EDGE_FALLING>;
                 status="okay";
 	};
 };
 
 #include "axp209.dtsi"
+
+&mmc0 {
+        pinctrl-0 = <&mmc0_pins_a>;
+        pinctrl-names = "default";
+        broken-cd;
+        bus-width = <4>;
+        vmmc-supply = <&reg_dcdc3>;
+        status = "okay";
+};
+
 
 &ohci0 {
         status = "okay";
@@ -100,6 +102,12 @@
 };
 
 &usbphy {
-	usb0_id_det-gpio = <&pio 5 6 GPIO_ACTIVE_HIGH>;
+	usb0_id_det-gpio = <&pio 5 6 GPIO_ACTIVE_HIGH>;  
+	status = "okay";
+};
+
+&pwm {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pwm0_pins>;
 	status = "okay";
 };

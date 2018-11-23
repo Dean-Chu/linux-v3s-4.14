@@ -1,6 +1,7 @@
 # Aliases extracted from modules themselves.
 alias crypto-echainiv echainiv
 alias echainiv echainiv
+alias usbfunc:mass_storage usb_f_mass_storage
 alias usb:v0BDApFFEFd*dc*dsc*dp*ic*isc*ip*in* r8188eu
 alias usb:v0DF6p0076d*dc*dsc*dp*ic*isc*ip*in* r8188eu
 alias usb:v2357p010Cd*dc*dsc*dp*ic*isc*ip*in* r8188eu

@@ -858,6 +858,7 @@ dtb-$(CONFIG_MACH_SUN8I) += \
 	sun8i-r16-parrot.dtb \
 	sun8i-v3s-licheepi-zero-uart1.dtb \
 	retro-v3s.dtb
+
 dtb-$(CONFIG_MACH_SUN9I) += \
 	sun9i-a80-optimus.dtb \
 	sun9i-a80-cubieboard4.dtb

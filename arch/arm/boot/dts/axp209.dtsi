@@ -55,7 +55,7 @@
 
 	ac_power_supply: ac-power-supply {
 		compatible = "x-powers,axp202-ac-power-supply";
-		status = "disabled";
+		status = "okay";
 	};
 
 	axp_gpio: gpio {
@@ -66,18 +66,24 @@
 
 	battery_power_supply: battery-power-supply {
 		compatible = "x-powers,axp209-battery-power-supply";
-		status = "disabled";
+		status = "okay";
 	};
-/*
+
 	regulators {
 
 		x-powers,dcdc-freq = <1500>;
 
 		reg_dcdc2: dcdc2 {
+			regulator-always-on;
+			regulator-min-microvolt = <1100000>;
+			regulator-max-microvolt = <1300000>;
 			regulator-name = "dcdc2";
 		};
 
 		reg_dcdc3: dcdc3 {
+			regulator-always-on;
+			regulator-min-microvolt = <3300000>;
+			regulator-max-microvolt = <3300000>;
 			regulator-name = "dcdc3";
 		};
 
@@ -89,15 +95,20 @@
 		};
 
 		reg_ldo2: ldo2 {
+			regulator-always-on;
+			regulator-min-microvolt = <3000000>;
+			regulator-max-microvolt = <3000000>;
 			regulator-name = "ldo2";
 		};
 
 		reg_ldo3: ldo3 {
 			regulator-name = "ldo3";
+			status = "disabled";
 		};
 
 		reg_ldo4: ldo4 {
 			regulator-name = "ldo4";
+			status = "disabled";
 		};
 
 		reg_ldo5: ldo5 {
@@ -105,7 +116,7 @@
 			status = "disabled";
 		};
 	};
-*/
+
 
 	usb_power_supply: usb_power_supply {
 		compatible = "x-powers,axp202-usb-power-supply";
